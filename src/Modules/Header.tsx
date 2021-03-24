@@ -3,21 +3,25 @@ import '../ProjectCSS.css'
 import {useDispatch} from "react-redux";
 import {actionIdEntered} from "../Redux/idActionCreator";
 
-export const Header :React.FC=() => {
-    const [selectedID, setSelectedID] = useState('')
+export const Header: React.FC = () => {
+    const [selectedQuery, setSelectedQuery] = useState('')
     const dispatch = useDispatch()
-    const handleChangeID =(event: React.ChangeEvent<HTMLInputElement>)=>{
-        setSelectedID(event.target.value)
+    const handleChangeID = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedQuery(event.target.value)
     }
-    const handleEnterPressed = (event:React.KeyboardEvent<HTMLInputElement>)=>{
-        if (event.key =='Enter'){
-            dispatch(actionIdEntered(selectedID))
+    const handleEnterPressed = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            dispatch(actionIdEntered(selectedQuery))
         }
     }
-    return(
+    return (
         <div className='header'>
-            <label>User ID:
-                <input type='text' onChange={(event)=>{handleChangeID(event)}} onKeyPress={(event)=>{handleEnterPressed(event)}}/>
+            <label>User query:
+                <input type='text' onChange={(event) => {
+                    handleChangeID(event)
+                }} onKeyPress={(event) => {
+                    handleEnterPressed(event)
+                }}/>
             </label>
         </div>
     )
