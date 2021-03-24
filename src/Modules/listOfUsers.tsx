@@ -14,7 +14,13 @@ data:Array<User>
 }
 
 export class ListOfUsers extends Component<any, any>{
-
+constructor(props:any) {
+    super(props);
+    this.state ={
+        data:[],
+        isLoaded:false,
+    };
+}
 
     getJSONData(idValue:string){
         const xhr =new XMLHttpRequest();
@@ -41,7 +47,7 @@ export class ListOfUsers extends Component<any, any>{
         }
     }
     render(){
-
+        const {data, isLoaded}:Readonly<ListOfUsersInterface> = this.state
 
         return(
             <div>
