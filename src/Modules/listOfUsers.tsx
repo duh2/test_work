@@ -16,6 +16,11 @@ export class ListOfUsers extends Component<any, any>{
             xhr.open("GET", `https://api.github.com/users?q=${idValue}`, true)
         }
         xhr.send()
+        xhr.onreadystatechange =()=>{
+            if (xhr.readyState!==4){
+                return {false}
+            }
+        }
     }
 
 }
