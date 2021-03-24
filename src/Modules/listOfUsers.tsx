@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {States} from "../Redux/store";
+import {States, store} from "../Redux/store";
 import {connect} from "react-redux";
 
 const mapStateToProps = (store:States)=>{
@@ -14,7 +14,8 @@ data:Array<User>
 }
 
 export class ListOfUsers extends Component<any, any>{
-constructor(props:any) {
+private unsubscribe: any
+    constructor(props:any) {
     super(props);
     this.state ={
         data:[],
@@ -23,6 +24,13 @@ constructor(props:any) {
 }
 componentDidMount() {
     this.getJSONData('')
+    this.unsubscribe = store.subscribe(()=>this.handleQueryChange)
+}
+componentWillUnmount(){
+    this.unsubscribe()
+}
+handleQueryChange(){
+    this.getJSONData(store.getState().value_id);
 }
 
     getJSONData(idValue:string){
