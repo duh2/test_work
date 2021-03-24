@@ -4,15 +4,18 @@ margin-top: 100px;
     margin-bottom: 40px;
 }
 .listOfUsers{
-    margin-left: 40vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
 }
 .userPlate{
     display: flex;
-    border: 1px solid black;
+    border: 1px solid gray;
     padding: 24px 12px;
-    margin: 24px 0px;
     width: 400px;
-
+    margin: 12px;
+    background-color: whitesmoke;
 }
 .avatar{
     align-self: flex-start;
