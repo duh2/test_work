@@ -1,7 +1,8 @@
 import { createStore } from "redux";
+import {reducer} from "./reducer";
 export const initialState ={
     value_id:''
 }
 
 
-export const store = createStore()
+export const store = createStore(reducer,initialState)
