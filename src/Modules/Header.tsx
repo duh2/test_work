@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import '../ProjectCSS.css'
 import {useDispatch} from "react-redux";
+import {actionIdEntered} from "../Redux/idActionCreator";
 
 export const Header :React.FC=() => {
     const [selectedID, setSelectedID] = useState('')
@@ -8,7 +9,11 @@ export const Header :React.FC=() => {
     const handleChangeID =(event: React.ChangeEvent<HTMLInputElement>)=>{
         setSelectedID(event.target.value)
     }
-    const handleEnterPressed
+    const handleEnterPressed = (event:React.KeyboardEvent<HTMLInputElement>)=>{
+        if (event.key ==='Enter'){
+            dispatch(actionIdEntered(selectedID))
+        }
+    }
     return(
         <div className='header'>
             <label>User ID:
