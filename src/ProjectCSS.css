@@ -7,8 +7,26 @@ margin-top: 100px;
     margin-left: 40vw;
 }
 .userPlate{
+    display: flex;
     border: 1px solid black;
     padding: 24px 12px;
     margin: 24px 0px;
-    width: 210px;
+    width: 400px;
+
+}
+.avatar{
+    align-self: flex-start;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+
+}
+.name{
+    font-weight: bold;
+    font-size: 24px;
+}
+.infoField{
+    margin-left: 10px;
+    padding-bottom: 10px;
 }
