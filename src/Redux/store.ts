@@ -6,3 +6,4 @@ export const initialState ={
 
 
 export const store = createStore(reducer,initialState)
+export type States = ReturnType<typeof reducer>
