@@ -1,7 +1,8 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {States, store} from "../Redux/store";
 import {connect} from "react-redux";
 import {UserCardList} from './userCardList'
+import {Loader} from "./loader";
 
 
 export interface User {
@@ -60,7 +61,7 @@ handleQueryChange(){
         const {data, isLoaded}:Readonly<ListOfUsersInterface> = this.state
 
         return(
-            !isLoaded ? <span className='listOfUsers'>Loading...</span>:
+            !isLoaded ? <Loader/>:
                 <UserCardList data={data}/>
 
         )
