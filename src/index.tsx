@@ -7,10 +7,12 @@ import {Header} from "./Modules/Header";
 import './ProjectCSS.css'
 import {Provider} from "react-redux";
 import {store} from "./Redux/store";
+import {ListOfUsers} from "./Modules/listOfUsers";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
 <Header/>
+<ListOfUsers/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

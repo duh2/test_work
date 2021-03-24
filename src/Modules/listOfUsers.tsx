@@ -21,6 +21,9 @@ constructor(props:any) {
         isLoaded:false,
     };
 }
+componentDidMount() {
+    this.getJSONData('')
+}
 
     getJSONData(idValue:string){
         const xhr =new XMLHttpRequest();
@@ -50,9 +53,12 @@ constructor(props:any) {
         const {data, isLoaded}:Readonly<ListOfUsersInterface> = this.state
 
         return(
-            <div>
-
-            </div>
+            !isLoaded ? <span>Loading...</span>:
+                <div className='listOfUsers'>
+                    {data.map(user=><div className='userPlate'>
+                        Name: {user.login}
+                    </div>)}
+                </div>
         )
     }
 
