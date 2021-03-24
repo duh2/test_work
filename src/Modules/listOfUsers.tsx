@@ -1,9 +1,10 @@
 import {Component} from "react";
 import {States, store} from "../Redux/store";
 import {connect} from "react-redux";
+import {UserCardList} from './userCardList'
 
 
-interface User {
+export interface User {
     login:string
 }
 interface ListOfUsersInterface {
@@ -60,11 +61,8 @@ handleQueryChange(){
 
         return(
             !isLoaded ? <span className='listOfUsers'>Loading...</span>:
-                <div className='listOfUsers'>
-                    {data.map(user=><div className='userPlate'>
-                        Name: {user.login}
-                    </div>)}
-                </div>
+                <UserCardList data={data}/>
+
         )
     }
 
