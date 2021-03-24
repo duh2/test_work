@@ -5,9 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Header} from "./Modules/Header";
 import './ProjectCSS.css'
+import {Provider} from "react-redux";
+import {store} from "./Redux/store";
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
 <Header/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
