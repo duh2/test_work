@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {States} from "../Redux/store";
+import {connect} from "react-redux";
 
 const mapStateToProps = (store:States)=>{
     return {userID:store.value_id}
@@ -39,5 +40,16 @@ export class ListOfUsers extends Component<any, any>{
             }
         }
     }
+    render(){
+
+
+        return(
+            <div>
+
+            </div>
+        )
+    }
 
 }
+const UsersList = connect(mapStateToProps,null)(ListOfUsers)
+export default UsersList;
