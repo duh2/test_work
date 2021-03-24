@@ -2,9 +2,7 @@ import {Component} from "react";
 import {States, store} from "../Redux/store";
 import {connect} from "react-redux";
 
-const mapStateToProps = (store:States)=>{
-    return {userID:store.value_id}
-}
+
 interface User {
     login:string
 }
@@ -13,7 +11,7 @@ isLoaded:boolean;
 data:Array<User>
 }
 
-export class ListOfUsers extends Component<any, any>{
+export class ListOfUsers extends Component<any, ListOfUsersInterface>{
 private unsubscribe: any
     constructor(props:any) {
     super(props);
@@ -24,7 +22,7 @@ private unsubscribe: any
 }
 componentDidMount() {
     this.getJSONData('')
-    this.unsubscribe = store.subscribe(()=>this.handleQueryChange)
+    this.unsubscribe = store.subscribe(()=>this.handleQueryChange())
 }
 componentWillUnmount(){
     this.unsubscribe()
@@ -39,7 +37,7 @@ handleQueryChange(){
         if (getAllUsers){
             xhr.open("GET", "https://api.github.com/users",true)
         } else {
-            xhr.open("GET", `https://api.github.com/users?q=${idValue}`, true)
+            xhr.open("GET", `https://api.github.com/search/users?q=${encodeURI(idValue)}`, true)
         }
         xhr.send()
         xhr.onreadystatechange = () => {
@@ -61,7 +59,7 @@ handleQueryChange(){
         const {data, isLoaded}:Readonly<ListOfUsersInterface> = this.state
 
         return(
-            !isLoaded ? <span>Loading...</span>:
+            !isLoaded ? <span className='listOfUsers'>Loading...</span>:
                 <div className='listOfUsers'>
                     {data.map(user=><div className='userPlate'>
                         Name: {user.login}
@@ -71,5 +69,5 @@ handleQueryChange(){
     }
 
 }
-const UsersList = connect(mapStateToProps,null)(ListOfUsers)
+const UsersList = connect(null,null)(ListOfUsers)
 export default UsersList;

@@ -10,7 +10,7 @@ export const Header :React.FC=() => {
         setSelectedID(event.target.value)
     }
     const handleEnterPressed = (event:React.KeyboardEvent<HTMLInputElement>)=>{
-        if (event.key ==='Enter'){
+        if (event.key =='Enter'){
             dispatch(actionIdEntered(selectedID))
         }
     }
