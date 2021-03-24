@@ -5,3 +5,10 @@ export function actionIdEntered(value:string|undefined) {
     }
 
 }
+export function actionPageSelected(value:number) {
+    return{
+        type:"ACTION_PAGE_SELECT",
+        value:value
+    }
+
+}

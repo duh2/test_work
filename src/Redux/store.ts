@@ -1,7 +1,8 @@
 import { createStore } from "redux";
 import {reducer} from "./reducer";
 export const initialState ={
-    query:''
+    query:'',
+    page:1
 }
 
 

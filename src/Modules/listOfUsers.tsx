@@ -47,7 +47,7 @@ export class ListOfUsers extends Component<any, ListOfUsersInterface> {
         if (getAllUsers) {
             xhr.open("GET", "https://api.github.com/users", true)
         } else {
-            xhr.open("GET", `https://api.github.com/search/users?q=${encodeURI(idValue)}`, true)
+            xhr.open("GET", `https://api.github.com/search/users?q=${encodeURI(idValue)}&page=${pageNumber}&per_page=${usersPerPage}`, true)
         }
         xhr.send()
         xhr.onreadystatechange = () => {
